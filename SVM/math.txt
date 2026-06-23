@@ -1,0 +1,30 @@
+Full objective function
+w = weights
+b = intercept
+||x||^2 = sum of all squared entries
+Hinge Loss = max(0, 1 - y_i(W @ x_i + b))
+
+L(w, b) = (1/2)||W||^2 + C(summation(i=1 to m)(Hinge Loss))
+
+Gradient wrt W
+If y_i(W @ x_i + b) >= 1
+dL/dW = W
+else
+dL/dW = W + C(-y_i @ x_i) = W - C * y_i * x_i
+
+Gradient wrt b
+If y_i(W @ x_i + b) >= 1
+dL/db = 0
+else
+dL/db = C * (-y_i) = - C * y_i
+
+eta = learning rate
+
+Update Rules:
+If y_i(W @ x_i + b) >= 1 (correctly classified)
+W = W - eta * W
+b = b
+else (incorrectly classified)
+W = W - eta * (W - C * y_i * x_i)
+b = b + eta * (C * y_i)
+
